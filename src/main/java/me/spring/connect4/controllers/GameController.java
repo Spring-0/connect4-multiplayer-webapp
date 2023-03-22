@@ -72,7 +72,7 @@ public class GameController {
      */
     @PostMapping("/playgame")
     public ResponseEntity<Game> makeMove(@RequestBody GamePlayRequest gamePlayRequest){
-        Game game = gameService.makeMove(gamePlayRequest.getGameID(), gamePlayRequest.getPlayer(), gamePlayRequest.getCol());
+        Game game = gameService.makeMove(gamePlayRequest.getGameID(), playerService.getPlayerByID(gamePlayRequest.getPlayerID()), gamePlayRequest.getCol());
 
         simpMessagingTemplate.convertAndSend("/topic/progress/" + game.getGameID(), game);
 

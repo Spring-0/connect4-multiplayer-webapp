@@ -6,24 +6,19 @@ import me.spring.connect4.models.player.Player;
 public class GamePlayRequest {
 
     private String gameID;
-    private GamePiece gamePiece;
     private int col;
-    private Player player;
+    private String playerID;
 
 
     public String getGameID() {
         return gameID;
     }
 
-    public GamePiece getGamePiece() {
-        return gamePiece;
-    }
-
     public int getCol() {
         return col;
     }
 
-    public Player getPlayer() {
-        return player;
+    public String getPlayerID() {
+        return playerID;
     }
 }
