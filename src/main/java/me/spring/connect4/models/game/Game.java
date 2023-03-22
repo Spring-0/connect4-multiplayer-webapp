@@ -218,17 +218,15 @@ public class Game {
      */
     public int colSpace(int col){
 
-        for(int i = 0; i < 6; i++){
-            if(this.board[i][col] != 0){
-                if(i == 0){
-                    return 0;
-                }
-                return i-1;
+        int bottomRow = -1; // initialize to -1
+        for(int i = 0; i < 6; i++) {
+            if(this.board[i][col] == 0) {
+                bottomRow = i; // update bottomRow to current empty row
+            } else {
+                break; // break out of loop if non-empty cell is found
             }
         }
-
-
-        return -1;
+        return bottomRow;
     }
 
     /**
