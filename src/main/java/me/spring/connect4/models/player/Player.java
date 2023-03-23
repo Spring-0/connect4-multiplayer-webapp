@@ -16,9 +16,11 @@ public class Player {
     private String playerID;
     private String username;
     private GamePiece gamePiece;
+    private String password;
 
-    public Player(String username){
+    public Player(String username, String password){
         this.username = username;
+        this.password = password;
     }
 
     public Player(){

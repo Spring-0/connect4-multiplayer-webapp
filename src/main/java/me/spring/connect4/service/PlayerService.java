@@ -1,5 +1,7 @@
 package me.spring.connect4.service;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import me.spring.connect4.db.PlayerRepo;
 import me.spring.connect4.models.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,54 @@ public class PlayerService {
             return player;
         }
         throw new RuntimeException("Player with that id is not found");
+    }
+
+    /**
+     * Method to authenticate player login
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    public Player login(String username, String password){
+
+        // Player exists in the database
+        if(playerRepo.findByUsernameAndPassword(username, password)){
+            Player player = playerRepo.findPlayerByUsernameAndPassword(username, password);
+            return player;
+        }
+
+        // Player does not exist
+        return null;
+    }
+
+    /**
+     * Method to register a new player
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    public Player register(String username, String password){
+
+        // Player does not exist in the database
+        if(!playerRepo.findByUsername(username)){
+            Player player = new Player(username, password);
+            playerRepo.save(player); // Add player to db
+            return player;
+        }
+
+        // Username taken
+        return null;
+
+    }
+
+
+    public void savePlayerIdCookie(String playerID, HttpServletResponse response){
+
+        Cookie userIdCookie = new Cookie("userId", playerID);
+        userIdCookie.setMaxAge(30 * 24 * 60 * 60); // 30 day expiry
+        response.addCookie(userIdCookie);
     }
 
 
