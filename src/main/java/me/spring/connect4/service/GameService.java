@@ -122,7 +122,7 @@ public class GameService {
 
             int rowIndex = game.colSpace(col);
 
-            if(rowIndex != -1){ // Column is not full
+            if(rowIndex != -1) { // Column is not full
                 game.getBoard()[rowIndex][col] = player.getGamePiece().getValue();
 
                 Player winner = game.checkWinner(rowIndex, col);
@@ -132,11 +132,12 @@ public class GameService {
                     game.swapTurn();
                     game.end();
                 }
-
                 game.swapTurn();
+                gameRepo.save(game);
             }
 
         }
+
         return game;
     }
 
