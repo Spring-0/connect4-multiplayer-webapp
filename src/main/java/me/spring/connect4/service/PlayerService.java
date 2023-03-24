@@ -37,8 +37,8 @@ public class PlayerService {
     public Player login(String username, String password){
 
         // Player exists in the database
-        if(playerRepo.findByUsernameAndPassword(username, password)){
-            Player player = playerRepo.findPlayerByUsernameAndPassword(username, password);
+        Player player = playerRepo.findPlayerByUsernameAndPassword(username, password);
+        if(player != null){
             return player;
         }
 
@@ -56,7 +56,7 @@ public class PlayerService {
     public Player register(String username, String password){
 
         // Player does not exist in the database
-        if(!playerRepo.findByUsername(username)){
+        if(playerRepo.findByUsername(username) == null){
             Player player = new Player(username, password);
             playerRepo.save(player); // Add player to db
             return player;
