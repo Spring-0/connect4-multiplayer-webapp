@@ -8,6 +8,8 @@ import me.spring.connect4.db.PlayerRepo;
 import me.spring.connect4.models.player.Player;
 import me.spring.connect4.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +26,7 @@ public class PlayerController {
 
     private PlayerService playerService;
 
+
     /**
      * Endpoint to register a new user
      *
@@ -31,15 +34,15 @@ public class PlayerController {
      * @return player object
      */
     @PostMapping("/register")
-    public String createPlayer(@RequestBody AuthRequest authRequest, HttpServletResponse response){
+    public ResponseEntity<Object> createPlayer(@RequestBody AuthRequest authRequest, HttpServletResponse response){
         Player player = playerService.register(authRequest.getUsername(), authRequest.getPassword());
         if(player != null){
             playerRepo.save(player);
             playerService.savePlayerIdCookie(player.getPlayerID(), response);
-            return "redirect:";
+            return ResponseEntity.ok().header("Location", "/").build();
         }
 
-        return "This username is already taken";
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("This username is taken");
     }
 
     /**
@@ -49,14 +52,14 @@ public class PlayerController {
      * @return
      */
     @PostMapping("/login")
-    public String login(@RequestBody AuthRequest authRequest, HttpServletResponse response){
+    public ResponseEntity<Object> login(@RequestBody AuthRequest authRequest, HttpServletResponse response){
 
         Player player = playerService.login(authRequest.getUsername(), authRequest.getPassword());
         if(player != null){
             playerService.savePlayerIdCookie(player.getPlayerID(), response);
-            return "redirect:";
+            return ResponseEntity.ok().header("Location", "/").build();
         }
-        return "Invalid login Credentials";
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid login credentials");
 
     }
 
