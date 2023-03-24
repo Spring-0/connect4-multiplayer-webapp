@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:src="@{/js/PlayerAuth.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/my-styles.css}">
+    <meta charset="UTF-8">
+    <title>Connect-4 Register</title>
+</head>
+
+
+<body class="bg-dark">
+
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div class="container mx-auto" style="width: auto">
+        <div class="rounded-3 text-center">
+            <h2 class="text-light">Register</h2>
+            <form class="form-control bg-dark bg-gradient" onsubmit="register(event)">
+
+                <div>
+                    <label class="text-light col-form-label" for="username">Username:</label>
+                    <input type="text" name="username" id="username">
+                </div>
+                <div>
+                    <label class="text-light col-form-label" for="password">Password:</label>
+                    <input type="password" name="password" id="password">
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+
+</html>
