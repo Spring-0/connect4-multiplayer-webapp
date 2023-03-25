@@ -19,5 +19,9 @@ public class ViewController {
         return "login.html";
     }
 
+    @GetMapping("/game")
+    public String game(){
+        return "game.html";
+    }
 
 }

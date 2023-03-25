@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script th:src="@{/js/Game.js}"></script>
+    <script th:src="@{/js/Util.js}"></script>
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/my-styles.css}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<body class="bg-dark">
+
+
+    <header>
+        <div class="border text-light text-center py-3 bg-gradient" style="width: auto";>
+            <h2 class="text-light fw-lighter"> <span id="player1Name"></span>  -  <span id="player2Name"></span> </h2>
+            <h6 class="text-light fw-light">GameID: <span id="gameID"></span></h6>
+        </div>
+    </header>
+
+    <div>
+
+        <div class="container border p-4">
+
+        </div>
+
+    </div>
+
+
+</body>
+
+
+</html>
