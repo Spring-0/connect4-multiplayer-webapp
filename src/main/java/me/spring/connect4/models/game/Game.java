@@ -16,15 +16,12 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String gameID;
+
     @Enumerated(EnumType.STRING)
     private GameStatus gameStatus;
 
-//    @Column(columnDefinition = "TEXT")
-//    private String board;
-
     @Convert(converter = IntArrayConverter.class)
     private int[][] board;
-
 
     @OneToOne
     @JoinColumn(name = "player1_id")
@@ -57,7 +54,6 @@ public class Game {
     public Game(){
 
     }
-
 
     private String convertBoardToJson(int[][] board) {
         Gson gson = new Gson();
