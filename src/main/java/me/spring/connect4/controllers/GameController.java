@@ -39,9 +39,9 @@ public class GameController {
      */
     @PostMapping("/create")
     public ResponseEntity<Game> start(@RequestBody String playerID){
-        log.info(playerID + " requested start game");
         Player player = playerService.getPlayerByID(playerID);
-        return ResponseEntity.ok(gameService.createGame(player));
+        Game game = gameService.createGame(player);
+        return ResponseEntity.ok(game);
     }
 
     /**
