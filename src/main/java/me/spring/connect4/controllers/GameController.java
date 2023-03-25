@@ -4,11 +4,14 @@ package me.spring.connect4.controllers;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.spring.connect4.controllers.dto.ConnectRequest;
+import me.spring.connect4.controllers.dto.GameMessage;
 import me.spring.connect4.controllers.dto.GamePlayRequest;
 import me.spring.connect4.models.game.Game;
 import me.spring.connect4.models.player.Player;
 import me.spring.connect4.service.GameService;
 import me.spring.connect4.service.PlayerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +26,8 @@ public class GameController {
 
     private final PlayerService playerService;
     private final GameService gameService;
+
+    @Autowired
     private final SimpMessagingTemplate simpMessagingTemplate;
 
 
