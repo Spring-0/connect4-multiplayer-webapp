@@ -17,8 +17,12 @@ public class GameService {
     @Autowired
     private GameRepo gameRepo;
 
+    private final SimpMessagingTemplate messagingTemplate;
 
-    public GameService(){}
+    @Autowired
+    public GameService(SimpMessagingTemplate messagingTemplate){
+        this.messagingTemplate = messagingTemplate;
+    }
 
 
     public Game createGame(Player player1){
@@ -37,18 +41,20 @@ public class GameService {
      * @param gameID
      * @return
      */
-    public Game connectToGame(Player player2, String gameID){
-        if(!gameExists(gameID)){
+    public Game connectToGame(Player player2, String gameID) {
+        Game game = gameRepo.findById(gameID).orElse(null);
+        if (game == null) {
             System.out.println("GameID does not exist");
             return null;
         }
-        Game game = getGameById(gameID);
+        if (game.getPlayer2() != null) {
+            System.out.println("Game already has two players");
+            return null;
+        }
         player2.setGamePiece(GamePiece.RED);
         game.setPlayer2(player2);
         game.setGameStatus(GameStatus.IN_PROGRESS);
-
         gameRepo.save(game);
-
         return game;
     }
 

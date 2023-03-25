@@ -47,8 +47,13 @@ public class GameController {
      */
     @PostMapping("/connect")
     public ResponseEntity<Game> connect(@RequestBody ConnectRequest connectRequest){
-        log.info(playerService.getPlayerByID(connectRequest.getPlayerID()) + " has requested to join: " + connectRequest.getGameID());
-        return ResponseEntity.ok(gameService.connectToGame(playerService.getPlayerByID(connectRequest.getPlayerID()), connectRequest.getGameID()));
+        Player player = playerService.getPlayerByID(connectRequest.getPlayerID());
+        Game game = gameService.connectToGame(player, connectRequest.getGameID());
+        if (game == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+        simpMessagingTemplate.convertAndSend("/topic/game/" + game.getGameID(), new GameMessage(player.getUsername(), connectRequest.getPlayerID()));
+        return ResponseEntity.ok(game);
     }
 
     /**
