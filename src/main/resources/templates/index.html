@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script th:src="@{/js/Game.js}"></script>
+    <script th:src="@{/js/Util.js}"></script>
     <link rel="stylesheet" th:href="@{/css/my-styles.css}">
     <meta charset="UTF-8">
     <title>Connect4</title>
@@ -18,16 +20,17 @@
         </div>
     </header>
 
+    <!--
+     Navigation Bar
+    !-->
     <section class="py-0">
         <div class="text-light nav bg-success nav-item-border nav-fill">
             <a class="nav-item nav-link" href="/myprofile">My Profile</a>
-            <a class="nav-item nav-link" href="/static">Play Game</a>
-            <a class="nav-item nav-link" href="/myprofile">Friends</a>
+            <a class="nav-item nav-link" onclick="createNewGame()">Create Game</a>
+            <a class="nav-item nav-link" onclick="connectToExistingGame()">Join Game</a>
             <a class="nav-link nav-item" href="/login">Login</a>
             <a class="nav-link nav-item" href="/register">Register</a>
-
         </div>
-
 
         <div class="p-4 bg-dark">
             <div class="text-light">
@@ -39,11 +42,6 @@
                     sit tempora veritatis!</p>
             </div>
         </div>
-
     </section>
-
-
 </body>
-
-
 </html>
