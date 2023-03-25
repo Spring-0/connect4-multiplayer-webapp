@@ -6,6 +6,7 @@ import me.spring.connect4.models.constants.GameStatus;
 import me.spring.connect4.models.game.Game;
 import me.spring.connect4.models.player.Player;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
