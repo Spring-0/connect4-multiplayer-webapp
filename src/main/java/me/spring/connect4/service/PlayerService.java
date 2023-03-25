@@ -72,6 +72,7 @@ public class PlayerService {
 
         Cookie userIdCookie = new Cookie("userId", playerID);
         userIdCookie.setMaxAge(30 * 24 * 60 * 60); // 30 day expiry
+        userIdCookie.setPath("/");
         response.addCookie(userIdCookie);
     }
 
