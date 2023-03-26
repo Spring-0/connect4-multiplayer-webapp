@@ -44,6 +44,17 @@
                 document.getElementById("player2Name").innerHTML = data["player"];
 
             })
+
+            // Subscribe to make move endpoint
+            stompClient.subscribe("/topic/makeMove/" + document.getElementById("gameID").innerHTML, function (gameState){
+                const data = JSON.parse(gameState.body);
+
+                const gameBoard = document.getElementById("game-board");
+                // Update game state
+
+
+            })
+
         })
 
 
