@@ -34,13 +34,24 @@ function createNewGame(){
  */
 function updateGameState(gameState, gameBoard){
 
+    const RED_CHIP = "../images/red-chip.png";
+    const YELLOW_CHIP = "../images/yellow-chip.png";
+
+    const img = document.createElement("img");
+
     const row = gameState["pieceRow"];
     const col = gameState["pieceCol"];
 
     const cell = gameBoard.rows[row].cells[col];
 
-    // TODO: Update to use game piece
-    cell.textContent = gameState["lastPlayed"]["username"]
+    if(gameState["lastPlayed"]["gamePiece"] == "RED"){
+        img.src = RED_CHIP;
+    } else{
+        img.src = YELLOW_CHIP;
+    }
+
+
+    cell.appendChild(img);
 
 }
 
