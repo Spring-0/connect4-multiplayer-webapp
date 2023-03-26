@@ -135,6 +135,13 @@ public class GameService {
                     game.swapTurn();
                     game.end();
                 }
+
+                // Check if the game board is full
+                if(game.isBoardFull()){
+                    // No winner meaning game is a tie.
+                    return new GameStateSpecial(gameID, player, SpecialGameCases.GAME_DRAW);
+                }
+
                 game.swapTurn();
                 gameRepo.save(game);
                 GameState gameState = new GameState(gameID, player, rowIndex, col, winningPlay);

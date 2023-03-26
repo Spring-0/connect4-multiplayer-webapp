@@ -120,6 +120,23 @@ public class Game {
     }
 
     /**
+     * Method to check if the game board is full
+     *
+     * @return
+     */
+    public boolean isBoardFull(){
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board[i].length; j++) {
+                if(board[i][j] == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    /**
      * Method that checks diagonal combinations for connect4
      *
      * @param row
