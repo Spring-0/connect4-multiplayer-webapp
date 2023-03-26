@@ -57,7 +57,7 @@ public class GameController {
         if (game == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
-        simpMessagingTemplate.convertAndSend("/topic/game/" + game.getGameID(), new GameMessage(player.getUsername(), connectRequest.getPlayerID()));
+        simpMessagingTemplate.convertAndSend("/topic/connect/" + game.getGameID(), new GameMessage(player.getUsername(), connectRequest.getPlayerID()));
         return ResponseEntity.ok(game);
     }
 

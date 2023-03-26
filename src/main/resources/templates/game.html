@@ -37,8 +37,8 @@
         stompClient.connect({}, function (frame){
             console.log("Established stomp connection")
 
-            // Subscribe to endpoint
-            stompClient.subscribe("/topic/game/" + document.getElementById("gameID").innerHTML, function (gameMessage){
+            // Subscribe to player connect endpoint
+            stompClient.subscribe("/topic/connect/" + document.getElementById("gameID").innerHTML, function (gameMessage){
                 const data = JSON.parse(gameMessage.body);
                 // Update player2 tag
                 document.getElementById("player2Name").innerHTML = data["player"];
