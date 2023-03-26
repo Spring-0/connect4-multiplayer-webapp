@@ -1,4 +1,4 @@
-package me.spring.connect4.controllers.dto;
+package me.spring.connect4.controllers.dto.gamestate;
 
 import me.spring.connect4.models.player.Player;
 
