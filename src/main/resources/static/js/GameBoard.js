@@ -7,7 +7,6 @@ columns.forEach((column) => {
     column.addEventListener('click', () => {
         // Get the index of the clicked column
         const colIndex = Array.from(column.parentNode.children).indexOf(column);
-        console.log(`Clicked column index: ${colIndex}`);
 
         const data = {
             gameID: document.getElementById("gameID").innerHTML,
