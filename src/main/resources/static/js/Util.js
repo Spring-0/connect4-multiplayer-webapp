@@ -42,3 +42,4 @@ function updateNames(response){
     }
     document.getElementById("gameID").innerHTML = response.gameID;
 }
+
