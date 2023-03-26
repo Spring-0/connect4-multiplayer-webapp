@@ -1,12 +1,13 @@
 package me.spring.connect4.service;
 
-import me.spring.connect4.controllers.dto.gamestate.GameState;
-import me.spring.connect4.controllers.dto.gamestate.GameStateSpecial;
+import me.spring.connect4.models.dto.gamestate.GameState;
+import me.spring.connect4.models.dto.gamestate.GameStateSpecial;
 import me.spring.connect4.db.GameRepo;
-import me.spring.connect4.models.constants.GamePiece;
-import me.spring.connect4.models.constants.GameStatus;
-import me.spring.connect4.models.game.Game;
-import me.spring.connect4.models.player.Player;
+import me.spring.connect4.constants.GamePiece;
+import me.spring.connect4.constants.GameStatus;
+import me.spring.connect4.constants.SpecialGameCases;
+import me.spring.connect4.models.Game;
+import me.spring.connect4.models.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

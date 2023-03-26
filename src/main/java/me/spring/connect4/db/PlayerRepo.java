@@ -1,6 +1,6 @@
 package me.spring.connect4.db;
 
-import me.spring.connect4.models.player.Player;
+import me.spring.connect4.models.Player;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

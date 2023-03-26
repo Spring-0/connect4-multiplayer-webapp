@@ -3,7 +3,7 @@ package me.spring.connect4.service;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import me.spring.connect4.db.PlayerRepo;
-import me.spring.connect4.models.player.Player;
+import me.spring.connect4.models.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
