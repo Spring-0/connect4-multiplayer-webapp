@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import me.spring.connect4.controllers.dto.ConnectRequest;
 import me.spring.connect4.controllers.dto.GameMessage;
 import me.spring.connect4.controllers.dto.GamePlayRequest;
-import me.spring.connect4.controllers.dto.GameState;
+import me.spring.connect4.controllers.dto.gamestate.GameState;
 import me.spring.connect4.models.game.Game;
 import me.spring.connect4.models.player.Player;
 import me.spring.connect4.service.GameService;

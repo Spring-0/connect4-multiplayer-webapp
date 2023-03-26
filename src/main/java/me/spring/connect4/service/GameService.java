@@ -1,6 +1,7 @@
 package me.spring.connect4.service;
 
-import me.spring.connect4.controllers.dto.GameState;
+import me.spring.connect4.controllers.dto.gamestate.GameState;
+import me.spring.connect4.controllers.dto.gamestate.GameStateSpecial;
 import me.spring.connect4.db.GameRepo;
 import me.spring.connect4.models.constants.GamePiece;
 import me.spring.connect4.models.constants.GameStatus;
@@ -136,11 +137,12 @@ public class GameService {
                 }
                 game.swapTurn();
                 gameRepo.save(game);
-                GameState gameState = new GameState(game.getGameID(), player, rowIndex, col, winningPlay);
+                GameState gameState = new GameState(gameID, player, rowIndex, col, winningPlay);
                 return gameState;
             }
+            return new GameStateSpecial(gameID, player, "This column is full");
         }
-        return null;
+        return new GameStateSpecial(gameID, player, "Not your turn!");
     }
 
 }

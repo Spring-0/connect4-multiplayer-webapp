@@ -14,7 +14,6 @@
 
 <body class="bg-dark">
 
-
     <header>
         <div class="border text-light text-center py-3 bg-gradient" style="width: auto";>
             <h2 class="text-light fw-lighter"> <span id="player1Name"></span>  -  <span id="player2Name"></span> </h2>
@@ -51,9 +50,10 @@
 
                 const gameBoard = document.getElementById("game-board");
 
-                // Update game state
-                updateGameState(data, gameBoard);
-
+                if(!data["specialMessage"]){
+                    // Update game state
+                    updateGameState(data, gameBoard);
+                }
 
             })
 
@@ -150,8 +150,6 @@
 
     </div>
 
-
 </body>
-
 
 </html>
