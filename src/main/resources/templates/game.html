@@ -50,9 +50,25 @@
 
                 const gameBoard = document.getElementById("game-board");
 
-                if(!data["specialMessage"]){
+                if(!data["specialCase"]){
                     // Update game state
                     updateGameState(data, gameBoard);
+                } else{
+                    const specialCase = data["specialCase"];
+                    console.log(data);
+                    switch(specialCase) {
+                        case "PLAYER_WIN":
+                            alert(data["lastPlayed"]["username"] + " has won the game!");
+                            endGame();
+                            break;
+                        case "PLAYER_FORFEIT":
+                            // TODO: Alert forfeit and end game
+                        case "GAME_DRAW":
+                            alert("Game ended in a draw!");
+                            endGame();
+                            break;
+                    }
+
                 }
 
             })
