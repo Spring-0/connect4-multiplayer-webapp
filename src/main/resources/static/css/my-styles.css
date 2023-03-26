@@ -12836,3 +12836,14 @@ textarea.form-control-lg {
     border-right: 1px solid #dee2e6 !important;
     border-bottom: 1px solid #dee2e6 !important;
 }
+
+#game-board {
+    border-collapse: collapse;
+}
+
+#game-board td {
+    border: 2px solid black;
+    width: 100px;
+    height: 90px;
+}
+
