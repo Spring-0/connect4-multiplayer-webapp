@@ -25,6 +25,26 @@ function createNewGame(){
 
 }
 
+
+/**
+ * Function used to update the game state
+ *
+ * @param gameState
+ * @param gameBoard
+ */
+function updateGameState(gameState, gameBoard){
+
+    const row = gameState["pieceRow"];
+    const col = gameState["pieceCol"];
+
+    const cell = gameBoard.rows[row].cells[col];
+
+    // TODO: Update to use game piece
+    cell.textContent = gameState["lastPlayed"]["username"]
+
+}
+
+
 /**
  * Helper Function to send post request with raw text body
  *

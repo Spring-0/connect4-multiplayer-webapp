@@ -50,7 +50,9 @@
                 const data = JSON.parse(gameState.body);
 
                 const gameBoard = document.getElementById("game-board");
+
                 // Update game state
+                updateGameState(data, gameBoard);
 
 
             })
