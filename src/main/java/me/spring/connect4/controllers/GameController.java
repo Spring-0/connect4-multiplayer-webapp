@@ -1,11 +1,13 @@
 package me.spring.connect4.controllers;
 
 
+import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.spring.connect4.controllers.dto.ConnectRequest;
 import me.spring.connect4.controllers.dto.GameMessage;
 import me.spring.connect4.controllers.dto.GamePlayRequest;
+import me.spring.connect4.controllers.dto.GameState;
 import me.spring.connect4.models.game.Game;
 import me.spring.connect4.models.player.Player;
 import me.spring.connect4.service.GameService;
@@ -30,6 +32,7 @@ public class GameController {
     @Autowired
     private final SimpMessagingTemplate simpMessagingTemplate;
 
+    private Gson gson = new Gson();
 
     /**
      * Endpoint to allow player1 to create a new game.
@@ -81,12 +84,14 @@ public class GameController {
      * @return updated game state
      */
     @PostMapping("/playgame")
-    public ResponseEntity<Game> makeMove(@RequestBody GamePlayRequest gamePlayRequest){
-        Game game = gameService.makeMove(gamePlayRequest.getGameID(), playerService.getPlayerByID(gamePlayRequest.getPlayerID()), gamePlayRequest.getCol());
+    public ResponseEntity makeMove(@RequestBody GamePlayRequest gamePlayRequest){
 
-        simpMessagingTemplate.convertAndSend("/topic/progress/" + game.getGameID(), game);
+        Player player = playerService.getPlayerByID(gamePlayRequest.getPlayerID());
+        GameState gameState = gameService.makeMove(gamePlayRequest.getGameID(), player, gamePlayRequest.getCol());
 
-        return ResponseEntity.ok(game);
+        simpMessagingTemplate.convertAndSend("/topic/makeMove/" + gameState.getGameID(), gson.toJson(gameState));
+
+        return ResponseEntity.ok(gameState);
 
     }
 
