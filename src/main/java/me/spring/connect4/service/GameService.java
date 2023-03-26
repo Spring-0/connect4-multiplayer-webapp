@@ -1,5 +1,6 @@
 package me.spring.connect4.service;
 
+import me.spring.connect4.controllers.dto.GameState;
 import me.spring.connect4.db.GameRepo;
 import me.spring.connect4.models.constants.GamePiece;
 import me.spring.connect4.models.constants.GameStatus;
@@ -112,31 +113,34 @@ public class GameService {
      * @param col
      * @return Updated game state
      */
-    public Game makeMove(String gameID, Player player, int col){
+    public GameState makeMove(String gameID, Player player, int col){
 
         Game game = getGameById(gameID);
+        int rowIndex;
 
         if(game.getTurn().equals(player)){
 
-            int rowIndex = game.colSpace(col);
+            rowIndex = game.colSpace(col);
 
             if(rowIndex != -1) { // Column is not full
+                boolean winningPlay = false;
                 game.getBoard()[rowIndex][col] = player.getGamePiece().getValue();
 
                 Player winner = game.checkWinner(rowIndex, col);
                 if(winner != null){
                     game.setWinner(winner);
                     System.out.println(winner.getUsername() + " has won the game.");
+                    winningPlay = true;
                     game.swapTurn();
                     game.end();
                 }
                 game.swapTurn();
                 gameRepo.save(game);
+                GameState gameState = new GameState(game.getGameID(), player, rowIndex, col, winningPlay);
+                return gameState;
             }
-
         }
-
-        return game;
+        return null;
     }
 
 }
