@@ -125,16 +125,15 @@ public class GameService {
             rowIndex = game.colSpace(col);
 
             if(rowIndex != -1) { // Column is not full
-                boolean winningPlay = false;
                 game.getBoard()[rowIndex][col] = player.getGamePiece().getValue();
 
                 Player winner = game.checkWinner(rowIndex, col);
                 if(winner != null){
                     game.setWinner(winner);
                     System.out.println(winner.getUsername() + " has won the game.");
-                    winningPlay = true;
                     game.swapTurn();
                     game.end();
+                    return new GameStateSpecial(gameID, player, SpecialGameCases.PLAYER_WIN);
                 }
 
                 // Check if the game board is full
@@ -145,12 +144,12 @@ public class GameService {
 
                 game.swapTurn();
                 gameRepo.save(game);
-                GameState gameState = new GameState(gameID, player, rowIndex, col, winningPlay);
+                GameState gameState = new GameState(gameID, player, rowIndex, col);
                 return gameState;
             }
-            return new GameStateSpecial(gameID, player, "This column is full");
+            return new GameStateSpecial(gameID, player, SpecialGameCases.COL_IS_FULL);
         }
-        return new GameStateSpecial(gameID, player, "Not your turn!");
+        return new GameStateSpecial(gameID, player, SpecialGameCases.NOT_YOUR_TURN);
     }
 
 }
