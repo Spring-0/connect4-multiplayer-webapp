@@ -1,11 +1,10 @@
-package me.spring.connect4.models.game;
+package me.spring.connect4.models;
 
 
 import com.google.gson.Gson;
 import jakarta.persistence.*;
-import me.spring.connect4.models.constants.GamePiece;
-import me.spring.connect4.models.constants.GameStatus;
-import me.spring.connect4.models.player.Player;
+import me.spring.connect4.constants.GamePiece;
+import me.spring.connect4.constants.GameStatus;
 import me.spring.connect4.util.converter.IntArrayConverter;
 
 

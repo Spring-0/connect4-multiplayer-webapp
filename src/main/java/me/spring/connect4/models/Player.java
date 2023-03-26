@@ -1,11 +1,11 @@
-package me.spring.connect4.models.player;
+package me.spring.connect4.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import me.spring.connect4.models.constants.GamePiece;
+import me.spring.connect4.constants.GamePiece;
 
 @Data
 @Entity

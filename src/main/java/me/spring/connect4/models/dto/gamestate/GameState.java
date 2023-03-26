@@ -1,7 +1,7 @@
-package me.spring.connect4.controllers.dto.gamestate;
+package me.spring.connect4.models.dto.gamestate;
 
-import me.spring.connect4.controllers.dto.PlayerDTO;
-import me.spring.connect4.models.player.Player;
+import me.spring.connect4.models.dto.PlayerDTO;
+import me.spring.connect4.models.Player;
 
 public class GameState {
 

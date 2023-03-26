@@ -1,7 +1,7 @@
-package me.spring.connect4.controllers.dto;
+package me.spring.connect4.models.dto;
 
-import me.spring.connect4.models.constants.GamePiece;
-import me.spring.connect4.models.player.Player;
+import me.spring.connect4.constants.GamePiece;
+import me.spring.connect4.models.Player;
 
 public class PlayerDTO {
     private String playerID;

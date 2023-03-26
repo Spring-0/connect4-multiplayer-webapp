@@ -1,4 +1,4 @@
-package me.spring.connect4.models.constants;
+package me.spring.connect4.constants;
 
 public enum GameStatus {
     NEW,

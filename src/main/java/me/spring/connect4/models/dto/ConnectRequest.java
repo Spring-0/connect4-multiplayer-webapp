@@ -1,4 +1,4 @@
-package me.spring.connect4.controllers.dto;
+package me.spring.connect4.models.dto;
 
 
 public class ConnectRequest {
