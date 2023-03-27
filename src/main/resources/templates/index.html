@@ -3,6 +3,8 @@
 <head>
     <script th:src="@{/js/Game.js}"></script>
     <script th:src="@{/js/Util.js}"></script>
+    <script th:src="@{/js/HomePage.js}"></script>
+    <script th:src="@{/js/PlayerAuth.js}"></script>
     <link rel="stylesheet" th:href="@{/css/my-styles.css}">
     <meta charset="UTF-8">
     <title>Connect4</title>
@@ -24,12 +26,12 @@
      Navigation Bar
     !-->
     <section class="py-0">
-        <div class="text-light nav bg-success nav-item-border nav-fill">
+        <div class="text-light nav bg-success nav-item-border nav-fill" id="navbar">
             <a class="nav-item nav-link" href="/myprofile">My Profile</a>
             <a class="nav-item nav-link" onclick="createNewGame()">Create Game</a>
             <a class="nav-item nav-link" onclick="connectToExistingGame()">Join Game</a>
-            <a class="nav-link nav-item" href="/login">Login</a>
-            <a class="nav-link nav-item" href="/register">Register</a>
+            <a class="nav-link nav-item" href="/login" id="login-anchor">Login</a>
+            <a class="nav-link nav-item" href="/register" id="register-anchor">Register</a>
         </div>
 
         <div class="p-4 bg-dark">
