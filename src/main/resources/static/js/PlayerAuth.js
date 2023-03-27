@@ -69,3 +69,21 @@ function login(event) {
       })
       .catch(error => console.error(error));
 }
+
+
+/**
+ * Function to log out the user
+ */
+function logout(){
+
+    fetch("/player/logout", {
+        method: "POST",
+        credentials: "include"
+    }).then( response => {
+        if (response.ok){
+            location.reload();
+        } else{
+            console.log("Logout failed")
+        }
+    })
+}

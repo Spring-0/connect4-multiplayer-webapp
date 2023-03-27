@@ -76,5 +76,11 @@ public class PlayerService {
         response.addCookie(userIdCookie);
     }
 
-
+    public void deletePlayerIdCookie(HttpServletResponse response){
+        Cookie userIdCookie = new Cookie("userId", "");
+        userIdCookie.setMaxAge(0);
+        userIdCookie.setPath("/");
+        response.addCookie(userIdCookie);
+    }
+    
 }

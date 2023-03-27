@@ -63,4 +63,12 @@ public class PlayerController {
 
     }
 
+    @PostMapping("/logout")
+    public HttpStatus logout(HttpServletResponse response){
+        playerService.deletePlayerIdCookie(response);
+
+        return HttpStatus.OK;
+    }
+
+
 }
