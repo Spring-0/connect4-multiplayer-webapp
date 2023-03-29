@@ -11,6 +11,22 @@ function joinGameWithID(){
     }
 }
 
+
+/**
+ * Allow user to join random game.
+ */
+function joinRandomGame(){
+
+    postText("/game/connect/random", "")
+        .then(response => {
+            window.location.href = "/game?gameID=" + response["gameID"];
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+
 /**
  * Create new game
  */
