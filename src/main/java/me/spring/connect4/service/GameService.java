@@ -55,28 +55,19 @@ public class GameService {
 
     /**
      * Functionality behind connect/random endpoint
-     * Queries database for games with "new" status
+     * Queries database for games with "new" status and returns game
      *
-     * @param player2
      * @return
      */
-    public Game connectToRandomGame(Player player2){
+    public Game getRandomGame(){
         List<Game> newGameEntities = gameRepo.findGameEntitiesByGameStatus(GameStatus.NEW);
 
         if(newGameEntities.size() > 0){
             Game game = newGameEntities.get(0);
-            player2.setGamePiece(GamePiece.RED);
-            game.setPlayer2(player2);
-            game.setGameStatus(GameStatus.IN_PROGRESS);
-
-            gameRepo.save(game);
-
             return game;
-
-        } else {
-            throw new RuntimeException("No games to join");
         }
 
+        return null;
     }
 
     /**

@@ -65,16 +65,19 @@ public class GameController {
     }
 
     /**
-     * Endpoint to allow player2 to connect to a random game
+     * Endpoint to get a random game
      *
-     * @param playerID
      * @return Updated game object
      */
     @PostMapping("/connect/random")
-    public ResponseEntity<Game> connectRandom(@RequestBody String playerID){
-        Player player = playerService.getPlayerByID(playerID);
-        log.info(player + " is connecting to a random game");
-        return ResponseEntity.ok(gameService.connectToRandomGame(player));
+    public ResponseEntity<Game> getRandomGame(){
+        Game game = gameService.getRandomGame();
+
+        if(game == null){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
+
+        return ResponseEntity.ok(game);
     }
 
     /**
