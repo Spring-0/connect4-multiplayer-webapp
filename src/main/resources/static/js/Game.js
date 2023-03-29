@@ -3,8 +3,9 @@
  * Send post request to connect game endpoint
  *
  */
-function connectToExistingGame(){
-    var gameId = prompt("Enter game ID: ", "")
+function joinGameWithID(){
+
+    const gameId = prompt("Enter game ID: ", "")
     if(gameId != null){
         window.location.href = "/game?gameID=" + gameId;
     }
