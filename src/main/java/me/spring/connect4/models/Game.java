@@ -119,6 +119,7 @@ public class Game {
         return false;
     }
 
+
     /**
      * Method to check if the game board is full
      *
@@ -210,6 +211,7 @@ public class Game {
         return false;
     }
 
+
     /**
      * Method that swaps the user's turn
      *
@@ -221,6 +223,7 @@ public class Game {
             this.turn = player1;
         }
     }
+
 
     /**
      * Method that returns the available row in a col
@@ -241,6 +244,7 @@ public class Game {
         return bottomRow;
     }
 
+
     /**
      * Method that ends the game,
      * updates the game status
@@ -250,9 +254,11 @@ public class Game {
 
     }
 
+
     /*
      * Accessors and Mutators
      */
+
 
     public String getGameID() {
         return gameID;

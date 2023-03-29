@@ -51,9 +51,7 @@ function updateGameState(gameState, gameBoard){
         img.src = YELLOW_CHIP;
     }
 
-
     cell.appendChild(img);
-
 }
 
 
@@ -61,3 +59,4 @@ function endGame(){
     window.location.replace("/"); // Send back to home page
     stompClient.disconnect(); // Close socket connection
 }
+

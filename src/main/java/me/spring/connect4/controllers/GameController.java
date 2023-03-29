@@ -34,6 +34,7 @@ public class GameController {
 
     private Gson gson = new Gson();
 
+
     /**
      * Endpoint to allow player1 to create a new game.
      *
@@ -47,6 +48,7 @@ public class GameController {
         return ResponseEntity.ok(game);
     }
 
+
     /**
      * Endpoint to allow player2 to connect to a specific game
      *
@@ -55,6 +57,7 @@ public class GameController {
      */
     @PostMapping("/connect")
     public ResponseEntity<Game> connect(@RequestBody ConnectRequest connectRequest){
+
         Player player = playerService.getPlayerByID(connectRequest.getPlayerID());
         Game game = gameService.connectToGame(player, connectRequest.getGameID());
         if (game == null) {
@@ -63,6 +66,7 @@ public class GameController {
         simpMessagingTemplate.convertAndSend("/topic/connect/" + game.getGameID(), new GameMessage(player.getUsername(), connectRequest.getPlayerID()));
         return ResponseEntity.ok(game);
     }
+
 
     /**
      * Endpoint to get a random game
@@ -79,6 +83,7 @@ public class GameController {
 
         return ResponseEntity.ok(game);
     }
+
 
     /**
      * Endpoint to allow player to make a move
@@ -97,6 +102,5 @@ public class GameController {
         return ResponseEntity.ok(gameState);
 
     }
-
-
 }
+

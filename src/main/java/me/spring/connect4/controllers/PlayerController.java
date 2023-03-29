@@ -45,6 +45,7 @@ public class PlayerController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("This username is taken");
     }
 
+
     /**
      * Endpoint to log in an existing user
      *
@@ -63,12 +64,12 @@ public class PlayerController {
 
     }
 
+
     @PostMapping("/logout")
     public HttpStatus logout(HttpServletResponse response){
         playerService.deletePlayerIdCookie(response);
 
         return HttpStatus.OK;
     }
-
 
 }

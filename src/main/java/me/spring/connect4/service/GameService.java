@@ -20,6 +20,7 @@ public class GameService {
     @Autowired
     private GameRepo gameRepo;
 
+
     public Game createGame(Player player1){
         Game game = new Game(player1);
 
@@ -27,6 +28,7 @@ public class GameService {
 
         return game;
     }
+
 
     /**
      * Functionality behind the connect endpoint
@@ -53,6 +55,7 @@ public class GameService {
         return game;
     }
 
+
     /**
      * Functionality behind connect/random endpoint
      * Queries database for games with "new" status and returns game
@@ -70,6 +73,7 @@ public class GameService {
         return null;
     }
 
+
     /**
      * Helper method to check if gameID exists
      *
@@ -80,6 +84,7 @@ public class GameService {
         Optional<Game> optionalGameEntity = gameRepo.findById(gameID);
         return optionalGameEntity.isPresent();
     }
+
 
     /**
      * Helper method to get game by ID
@@ -94,8 +99,8 @@ public class GameService {
             return gameEntity;
         }
         throw new RuntimeException("Game does not exist");
-
     }
+
 
     /**
      * Functionality behind playgame endpoint

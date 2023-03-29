@@ -32,26 +32,19 @@ public class Player {
      * Accessors and Mutators
      */
 
+
     public String getPlayerID() {
         return playerID;
     }
-
-    public void setPlayerID(String playerID) {
-        this.playerID = playerID;
-    }
-
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
-
     public void setGamePiece(GamePiece gamePiece){
         this.gamePiece = gamePiece;
     }
-
     public GamePiece getGamePiece(){
         return this.gamePiece;
     }

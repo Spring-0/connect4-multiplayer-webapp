@@ -13,6 +13,7 @@ public class PlayerService {
     @Autowired
     PlayerRepo playerRepo;
 
+
     /**
      * Get player by ID
      *
@@ -26,6 +27,7 @@ public class PlayerService {
         }
         throw new RuntimeException("Player with that id is not found");
     }
+
 
     /**
      * Method to authenticate player login
@@ -45,6 +47,7 @@ public class PlayerService {
         // Player does not exist
         return null;
     }
+
 
     /**
      * Method to register a new player
@@ -68,6 +71,12 @@ public class PlayerService {
     }
 
 
+    /**
+     * Method to save player's ID as a cookie in "/" path
+     *
+     * @param playerID
+     * @param response
+     */
     public void savePlayerIdCookie(String playerID, HttpServletResponse response){
 
         Cookie userIdCookie = new Cookie("userId", playerID);
@@ -76,6 +85,12 @@ public class PlayerService {
         response.addCookie(userIdCookie);
     }
 
+
+    /**
+     * Method to delete player ID cookie from "/" path
+     *
+     * @param response
+     */
     public void deletePlayerIdCookie(HttpServletResponse response){
         Cookie userIdCookie = new Cookie("userId", "");
         userIdCookie.setMaxAge(0);

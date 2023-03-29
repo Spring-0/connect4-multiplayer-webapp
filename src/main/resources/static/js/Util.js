@@ -24,13 +24,13 @@ function getPlayerIDFromCookie() {
     return null;
 }
 
+
 /**
  * Function to update player names & Game ID tags
  *
  * @param response
  */
 function updateNames(response){
-    console.log("called updateNames")
     document.getElementById("player1Name").innerHTML = response["player1"].username;
 
     if (response["player2"] && response["player2"].username) {
@@ -42,6 +42,7 @@ function updateNames(response){
     }
     document.getElementById("gameID").innerHTML = response.gameID;
 }
+
 
 /**
  * Helper Function to send post request with raw text body
@@ -70,6 +71,7 @@ function postText(endpoint, body) {
             console.error("Error:", error);
         });
 }
+
 
 /**
  * Helper Function to post JSON data to endpoint
