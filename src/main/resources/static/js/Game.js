@@ -30,15 +30,18 @@ function joinRandomGame(){
 /**
  * Create new game
  */
-function createNewGame(){
+function createNewGame() {
 
-    console.log("Creating a new game...")
-    postText(getPlayerIDFromCookie())
-        .then(response => {
-            window.location.replace("/game")
-            updateNames(response)
-            return response;
-        })
+    if (isLoggedIn()) {
+        console.log("Creating a new game...")
+        postText(getPlayerIDFromCookie())
+            .then(response => {
+                window.location.replace("/game")
+                updateNames(response)
+                return response;
+            })
+    }
+    alert("You must be logged in to create a game.")
 
 }
 

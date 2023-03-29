@@ -87,3 +87,17 @@ function logout(){
         }
     })
 }
+
+
+/**
+ * Function to check if a player is logged in
+ *
+ * @returns {boolean}
+ */
+function isLoggedIn(){
+    if(getPlayerIDFromCookie() == null){
+        return false;
+    }
+    return true;
+}
+

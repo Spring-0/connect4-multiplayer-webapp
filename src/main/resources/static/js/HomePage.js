@@ -28,6 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function showGameOptionPopup(){
 
+    // Verify that user is logged in.
+    if(!isLoggedIn()){
+        alert("You must be logged in to join a game.");
+        return;
+    }
+
     // Declare popup
     const popup = document.createElement("div");
     popup.classList.add("popover");
