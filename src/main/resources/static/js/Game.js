@@ -40,8 +40,9 @@ function createNewGame() {
                 updateNames(response)
                 return response;
             })
+    } else{
+        alert("You must be logged in to create a game.")
     }
-    alert("You must be logged in to create a game.")
 
 }
 
