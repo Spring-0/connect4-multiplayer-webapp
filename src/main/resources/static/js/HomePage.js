@@ -26,4 +26,44 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function showGameOptionPopup(){
+
+    // Declare popup
+    const popup = document.createElement("div");
+    popup.classList.add("popover");
+
+    const message = document.createElement("p");
+    message.innerText = "Select game type: ";
+    popup.append(message)
+
+
+    // Declare join random game button
+    const joinRandomButton = document.createElement("button");
+    joinRandomButton.innerText = "Join a random game";
+    joinRandomButton.classList.add("button");
+
+    joinRandomButton.onclick = function (){
+        popup.remove();
+        joinRandomGame();
+    }
+
+    // Declare Join with ID button
+    const joinSpecificGameButton = document.createElement("button");
+    joinSpecificGameButton.innerText = "Join with game id";
+    joinSpecificGameButton.classList.add("button");
+
+    joinSpecificGameButton.onclick = function (){
+        popup.remove();
+        joinGameWithID();
+    }
+
+    // Append buttons to popup
+    popup.appendChild(joinSpecificGameButton);
+    popup.appendChild(joinRandomButton);
+
+    // Add popup to page
+    document.body.appendChild(popup);
+
+}
+
 
