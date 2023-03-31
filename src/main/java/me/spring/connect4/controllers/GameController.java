@@ -4,6 +4,7 @@ package me.spring.connect4.controllers;
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.spring.connect4.constants.SpecialGameCases;
 import me.spring.connect4.models.dto.ConnectRequest;
 import me.spring.connect4.models.dto.GameMessage;
 import me.spring.connect4.models.dto.GamePlayRequest;
@@ -82,6 +83,27 @@ public class GameController {
         }
 
         return ResponseEntity.ok(game);
+    }
+
+
+    @PostMapping("/verify")
+    public ResponseEntity<SpecialGameCases> verify(@RequestBody ConnectRequest connectRequest){
+        System.out.println(connectRequest.getGameID() + " " + connectRequest.getPlayerID());
+        Game game = gameService.getGame(connectRequest.getGameID());
+        Player player = playerService.getPlayerByID(connectRequest.getPlayerID());
+
+        if(game == null){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(SpecialGameCases.GAME_NOT_FOUND);
+        } else if (player == null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(SpecialGameCases.PLAYER_ID_DOES_NOT_EXIST);
+        } else if (game.getPlayer2() != null && game.getPlayer1() != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(SpecialGameCases.GAME_IS_FULL);
+        } else if (game.getPlayer1().getPlayerID() == player.getPlayerID()) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(SpecialGameCases.CANNOT_PLAY_AGAINST_YOURSELF);
+        }
+
+        return ResponseEntity.ok(SpecialGameCases.GAME_IS_VALID);
+
     }
 
 
