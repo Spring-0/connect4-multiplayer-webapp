@@ -64,7 +64,6 @@ function postText(endpoint, body) {
             return response.json();
         })
         .then(data => {
-            console.log("Response received:", data);
             return data;
         })
         .catch(error => {
