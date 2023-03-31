@@ -76,26 +76,42 @@
         })
 
 
-        // Connect to an existing game
-        if(gameId){
+            // Verify that the player can join the game
+            if(gameId){
 
-            const data = {
-                playerID: getPlayerIDFromCookie(),
-                gameID: gameId
-            };
+                let data = {
+                    playerID: getPlayerIDFromCookie(),
+                    gameID: gameId
+                };
 
-            postJson("/game/connect", data)
-                .then(response => {
-                    updateNames(response);
-                })
+                postJson("/game/verify", data)
+                    .then(result => {
+                        if(result === "GAME_IS_VALID"){
+                            postJson("/game/connect", data)
+                                .then(response => {
+                                    updateNames(response);
+                                    console.log("Connected to game")
+                                })
+                        } else{
+                            document.location.replace("/")
+                            alert(result);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
 
-            // Create a new game
-        } else{
-            postText("/game/create", getPlayerIDFromCookie())
-                .then(response => {
-                    updateNames(response);
-                })
-        }
+                // Create a new game
+            } else{
+                postText("/game/create", getPlayerIDFromCookie())
+                    .then(response => {
+                        updateNames(response);
+                        console.log(document.getElementById("gameID").innerHTML);
+                        // Subscribe to the game after the game ID is updated
+                        subscribeToGame();
+                    })
+            }
+        })
 
     </script>
 
