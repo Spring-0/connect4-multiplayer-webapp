@@ -24,4 +24,9 @@ public class ViewController {
         return "game.html";
     }
 
+    @GetMapping("/profile")
+    public String profile(){
+        return "profile.html";
+    }
+
 }
