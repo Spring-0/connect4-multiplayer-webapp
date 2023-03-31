@@ -56,6 +56,12 @@ public class GameService {
     }
 
 
+
+    public Game getGame(String gameID){
+        return gameRepo.findById(gameID).orElse(null);
+    }
+
+
     /**
      * Functionality behind connect/random endpoint
      * Queries database for games with "new" status and returns game
