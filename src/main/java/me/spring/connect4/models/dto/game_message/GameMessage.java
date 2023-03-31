@@ -1,4 +1,4 @@
-package me.spring.connect4.models.dto;
+package me.spring.connect4.models.dto.game_message;
 
 
 /**
