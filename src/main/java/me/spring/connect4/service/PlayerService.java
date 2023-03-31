@@ -25,7 +25,7 @@ public class PlayerService {
         if(player != null){
             return player;
         }
-        throw new RuntimeException("Player with that id is not found");
+        return null;
     }
 
 
