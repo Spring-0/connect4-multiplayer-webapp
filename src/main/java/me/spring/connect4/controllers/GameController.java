@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.spring.connect4.constants.SpecialGameCases;
 import me.spring.connect4.models.dto.ConnectRequest;
-import me.spring.connect4.models.dto.game_message.GameMessage;
+import me.spring.connect4.models.dto.GameMessage;
 import me.spring.connect4.models.dto.GamePlayRequest;
 import me.spring.connect4.models.dto.gamestate.GameState;
 import me.spring.connect4.models.Game;
