@@ -122,6 +122,10 @@ public class GameService {
         Game game = getGameById(gameID);
         int rowIndex;
 
+        if(game.getPlayer2() == null){
+            return new GameStateSpecial(gameID, player, SpecialGameCases.WAITING_FOR_PLAYER);
+        }
+
         if(game.getTurn().equals(player)){
 
             rowIndex = game.colSpace(col);
