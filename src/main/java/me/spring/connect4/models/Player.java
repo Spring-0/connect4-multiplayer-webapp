@@ -1,9 +1,6 @@
 package me.spring.connect4.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import me.spring.connect4.constants.GamePiece;
 
@@ -18,9 +15,13 @@ public class Player {
     private GamePiece gamePiece;
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private PlayerStatistics playerStatistics;
+
     public Player(String username, String password){
         this.username = username;
         this.password = password;
+        this.playerStatistics = new PlayerStatistics(this);
     }
 
     public Player(){
