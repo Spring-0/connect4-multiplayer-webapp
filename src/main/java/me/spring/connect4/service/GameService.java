@@ -1,5 +1,6 @@
 package me.spring.connect4.service;
 
+import me.spring.connect4.db.StatsRepo;
 import me.spring.connect4.models.dto.gamestate.GameState;
 import me.spring.connect4.models.dto.gamestate.GameStateSpecial;
 import me.spring.connect4.db.GameRepo;
