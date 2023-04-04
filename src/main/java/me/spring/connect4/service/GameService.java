@@ -20,6 +20,8 @@ public class GameService {
     @Autowired
     private GameRepo gameRepo;
 
+    @Autowired
+    private StatsRepo statsRepo;
 
     public Game createGame(Player player1){
         Game game = new Game(player1);
@@ -137,6 +139,9 @@ public class GameService {
                 if(winner != null){
                     game.setWinner(winner);
                     System.out.println(winner.getUsername() + " has won the game.");
+
+                    statsRepo.incrementWin(winner.getPlayerID());
+
                     game.swapTurn();
                     game.end();
                     return new GameStateSpecial(gameID, player, SpecialGameCases.PLAYER_WIN);

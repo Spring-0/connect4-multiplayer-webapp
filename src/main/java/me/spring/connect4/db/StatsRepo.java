@@ -11,4 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StatsRepo extends CrudRepository<PlayerStatistics, String> {
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE PlayerStatistics p SET p.wins = p.wins + 1 WHERE p.player.playerID = :playerId")
+    void incrementWin(@Param("playerId") String playerId);
+
 }
