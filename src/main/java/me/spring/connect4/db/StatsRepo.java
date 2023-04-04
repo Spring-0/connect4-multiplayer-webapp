@@ -1,0 +1,14 @@
+package me.spring.connect4.db;
+
+import jakarta.transaction.Transactional;
+import me.spring.connect4.models.PlayerStatistics;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface StatsRepo extends CrudRepository<PlayerStatistics, String> {
+
+}
