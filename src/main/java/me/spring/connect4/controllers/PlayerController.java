@@ -3,6 +3,8 @@ package me.spring.connect4.controllers;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import me.spring.connect4.db.StatsRepo;
+import me.spring.connect4.models.PlayerStatistics;
 import me.spring.connect4.models.dto.AuthRequest;
 import me.spring.connect4.db.PlayerRepo;
 import me.spring.connect4.models.Player;
@@ -10,10 +12,7 @@ import me.spring.connect4.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
@@ -23,6 +22,9 @@ public class PlayerController {
 
     @Autowired
     PlayerRepo playerRepo;
+
+    @Autowired
+    StatsRepo statsRepo;
 
     private PlayerService playerService;
 
@@ -70,6 +72,14 @@ public class PlayerController {
         playerService.deletePlayerIdCookie(response);
 
         return HttpStatus.OK;
+    }
+
+
+    @GetMapping("/player-stats")
+    public ResponseEntity<PlayerStatistics> getPlayerStats(@RequestParam("playerId") String playerId){
+        PlayerStatistics playerStats = statsRepo.findPlayerStatisticsByPlayerPlayerID(playerId);
+
+        return ResponseEntity.ok(playerStats);
     }
 
 }
