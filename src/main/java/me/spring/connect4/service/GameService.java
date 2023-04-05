@@ -164,4 +164,16 @@ public class GameService {
         return new GameStateSpecial(gameID, player, SpecialGameCases.NOT_YOUR_TURN);
     }
 
+
+    /**
+     * Method that ends the game,
+     * updates the game status
+     */
+    public void end(Game game){
+        game.setGameStatus(GameStatus.FINISHED);
+        statsRepo.incrementGamePlayed(game.getPlayer1().getPlayerID());
+        statsRepo.incrementGamePlayed(game.getPlayer2().getPlayerID());
+
+    }
+
 }

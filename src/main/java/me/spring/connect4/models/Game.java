@@ -245,16 +245,6 @@ public class Game {
     }
 
 
-    /**
-     * Method that ends the game,
-     * updates the game status
-     */
-    public void end(){
-        this.gameStatus = GameStatus.FINISHED;
-
-    }
-
-
     /*
      * Accessors and Mutators
      */
