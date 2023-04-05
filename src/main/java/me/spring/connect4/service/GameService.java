@@ -144,13 +144,14 @@ public class GameService {
                     statsRepo.incrementWin(winner.getPlayerID());
 
                     game.swapTurn();
-                    game.end();
+                    end(game);
                     return new GameStateSpecial(gameID, player, SpecialGameCases.PLAYER_WIN);
                 }
 
                 // Check if the game board is full
                 if(game.isBoardFull()){
                     // No winner meaning game is a tie.
+                    end(game);
                     return new GameStateSpecial(gameID, player, SpecialGameCases.GAME_DRAW);
                 }
 

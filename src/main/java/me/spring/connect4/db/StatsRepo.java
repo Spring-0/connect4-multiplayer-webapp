@@ -16,4 +16,11 @@ public interface StatsRepo extends CrudRepository<PlayerStatistics, String> {
     @Query("UPDATE PlayerStatistics p SET p.wins = p.wins + 1 WHERE p.player.playerID = :playerId")
     void incrementWin(@Param("playerId") String playerId);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE PlayerStatistics p SET p.gamesPlayed = p.gamesPlayed + 1 WHERE p.player.playerID = :playerId")
+    void incrementGamePlayed(@Param("playerId") String playerId);
+
+
+
 }
