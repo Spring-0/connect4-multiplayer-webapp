@@ -91,3 +91,25 @@ function postJson(endpoint, data) {
         .catch(error => console.error(error));
 }
 
+
+/**
+ * Helper Function for sending GET requests to endpoint
+ *
+ * @param endpoint
+ * @returns {Promise<any>}
+ */
+function getRaw(endpoint){
+    return fetch(endpoint, {
+        method: 'GET'
+    })
+        .then(response => {
+            if(!response.ok){
+                throw new Error("HTTP error: " + response.status)
+            }
+            return response.json();
+        })
+        .then(data => {
+            return data;
+        })
+}
+
