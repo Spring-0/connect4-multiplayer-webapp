@@ -12849,3 +12849,8 @@ textarea.form-control-lg {
     height: 70px;
 }
 
+.text-light td, th {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
+}
+
