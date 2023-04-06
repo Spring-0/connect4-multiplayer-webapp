@@ -33,7 +33,7 @@ public class GameController {
     @Autowired
     private final SimpMessagingTemplate simpMessagingTemplate;
 
-    private Gson gson = new Gson();
+    private Gson gson;
 
 
     /**
@@ -98,7 +98,7 @@ public class GameController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(SpecialGameCases.PLAYER_ID_DOES_NOT_EXIST);
         } else if (game.getPlayer2() != null && game.getPlayer1() != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(SpecialGameCases.GAME_IS_FULL);
-        } else if (game.getPlayer1().getPlayerID() == player.getPlayerID()) {
+        } else if (game.getPlayer1().getPlayerID().equals(player.getPlayerID())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(SpecialGameCases.CANNOT_PLAY_AGAINST_YOURSELF);
         }
 

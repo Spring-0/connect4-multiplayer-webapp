@@ -22,10 +22,7 @@ public class PlayerService {
      */
     public Player getPlayerByID(String playerID){
         Player player = playerRepo.findPlayerByPlayerID(playerID);
-        if(player != null){
-            return player;
-        }
-        return null;
+        return player;
     }
 
 
@@ -40,12 +37,9 @@ public class PlayerService {
 
         // Player exists in the database
         Player player = playerRepo.findPlayerByUsernameAndPassword(username, password);
-        if(player != null){
-            return player;
-        }
+        return player;
 
         // Player does not exist
-        return null;
     }
 
 

@@ -95,9 +95,7 @@ function logout(){
  * @returns {boolean}
  */
 function isLoggedIn(){
-    if(getPlayerIDFromCookie() == null){
-        return false;
-    }
-    return true;
+    return getPlayerIDFromCookie() != null;
+
 }
 

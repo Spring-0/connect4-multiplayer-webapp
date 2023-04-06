@@ -75,8 +75,7 @@ public class GameService {
         List<Game> newGameEntities = gameRepo.findGameEntitiesByGameStatus(GameStatus.NEW);
 
         if(newGameEntities.size() > 0){
-            Game game = newGameEntities.get(0);
-            return game;
+            return newGameEntities.get(0);
         }
 
         return null;
@@ -104,8 +103,7 @@ public class GameService {
     private Game getGameById(String gameID){
         Optional<Game> optionalGameEntity = gameRepo.findById(gameID);
         if(gameExists(gameID)){
-            Game gameEntity = optionalGameEntity.get();
-            return gameEntity;
+            return optionalGameEntity.get();
         }
         throw new RuntimeException("Game does not exist");
     }
@@ -158,8 +156,7 @@ public class GameService {
 
                 game.swapTurn();
                 gameRepo.save(game);
-                GameState gameState = new GameState(gameID, player, rowIndex, col);
-                return gameState;
+                return new GameState(gameID, player, rowIndex, col);
             }
             return new GameStateSpecial(gameID, player, SpecialGameCases.COL_IS_FULL);
         }

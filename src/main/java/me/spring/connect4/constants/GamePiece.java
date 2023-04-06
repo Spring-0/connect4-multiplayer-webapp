@@ -7,7 +7,7 @@ public enum GamePiece {
 
     private int value;
 
-    private GamePiece(int value){
+    GamePiece(int value){
         this.value = value;
     }
 
