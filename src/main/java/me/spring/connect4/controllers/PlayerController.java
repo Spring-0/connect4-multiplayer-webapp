@@ -4,7 +4,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.spring.connect4.db.StatsRepo;
-import me.spring.connect4.models.PlayerStatistics;
 import me.spring.connect4.models.dto.AuthRequest;
 import me.spring.connect4.db.PlayerRepo;
 import me.spring.connect4.models.Player;
@@ -76,11 +75,10 @@ public class PlayerController {
     }
 
 
-    @GetMapping("/player-stats")
-    public ResponseEntity<PlayerStatistics> getPlayerStats(@RequestParam("playerId") String playerId){
-        PlayerStatistics playerStats = statsRepo.findPlayerStatisticsByPlayerPlayerID(playerId);
-
-        return ResponseEntity.ok(playerStats);
+    @GetMapping("/player-details")
+    public ResponseEntity<PlayerDTO> getPlayerDetails(@RequestParam("playerId") String playerId){
+        PlayerDTO player = new PlayerDTO(playerRepo.findPlayerByPlayerID(playerId));
+        return ResponseEntity.ok(player);
     }
 
 }
