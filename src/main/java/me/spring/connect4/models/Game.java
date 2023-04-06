@@ -1,7 +1,6 @@
 package me.spring.connect4.models;
 
 
-import com.google.gson.Gson;
 import jakarta.persistence.*;
 import me.spring.connect4.constants.GamePiece;
 import me.spring.connect4.constants.GameStatus;
@@ -52,11 +51,6 @@ public class Game {
 
     public Game(){
 
-    }
-
-    private String convertBoardToJson(int[][] board) {
-        Gson gson = new Gson();
-        return gson.toJson(board);
     }
 
 
