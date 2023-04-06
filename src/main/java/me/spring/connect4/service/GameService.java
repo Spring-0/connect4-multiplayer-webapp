@@ -142,6 +142,7 @@ public class GameService {
                     System.out.println(winner.getUsername() + " has won the game.");
 
                     statsRepo.incrementWin(winner.getPlayerID());
+                    statsRepo.incrementLoss(winner.equals(game.getPlayer1()) ? game.getPlayer2().getPlayerID() : game.getPlayer1().getPlayerID());
 
                     game.swapTurn();
                     end(game);
