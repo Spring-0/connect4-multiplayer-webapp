@@ -89,7 +89,7 @@
                             postJson("/game/connect", data)
                                 .then(response => {
                                     updateNames(response);
-                                    console.log("Connected to game")
+                                    subscribeToGame();
                                 })
                         } else{
                             document.location.replace("/")
