@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../static/css/my-styles.css">
+    <link rel="stylesheet" th:href="@{/css/my-styles.css}">
+    <script th:src="@{/js/Util.js}"></script>
     <meta charset="UTF-8">
     <title>My Profile</title>
 </head>
-<body>
+
+<body class="bg-dark">
 
 <header class="py-0">
-  <div class="p-5 p-lg-4 bg-gradient bg-danger border border-light">
-    <div class="container px-lg-5 align-content-md-center">
-      <h1 class="display-5 fw-bold text-lg-center text-light">Welcome @Username</h1>
-      <h6 class="text-md-center text-black text-opacity-75">See your profile details here!</h6>
+    <div class="p-5 p-lg-4 bg-gradient bg-danger border border-light">
+        <div class="container px-lg-5 align-content-md-center">
+            <h1 id="welcome-message" class="display-5 fw-bold text-lg-center text-light">Welcome @Username</h1>
+            <h6 class="text-md-center text-black text-opacity-75">See your profile details here!</h6>
+        </div>
     </div>
-  </div>
 </header>
 
-<!--<div class="text-light nav bg-success nav-item-border nav-fill py-0">-->
-<!--  <a class="nav-item nav-link" href="/myprofile">My Profile</a>-->
-<!--  <a class="nav-item nav-link" href="/">Play Game</a>-->
-<!--  <a class="nav-item nav-link" href="/myprofile">Friends</a>-->
-<!--</div>-->
+<div class="container py-4 text-light">
+    <div class="row">
+        <div class="col">
+            <div class="card bg-dark text-light border-1 border-light">
+                <div class="card-body">
+                    <h5 class="card-title">Game Statistics</h5>
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Games Played</th>
+                            <td id="games-played-value">0</td>
+                        </tr>
+                        <tr>
+                            <th>Games Won</th>
+                            <td id="games-won-value">0</td>
+                        </tr>
+                        <tr>
+                            <th>Games Lost</th>
+                            <td id="games-lost-value">0</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
