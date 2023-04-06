@@ -1,6 +1,6 @@
 package me.spring.connect4.models.dto.gamestate;
 
-import me.spring.connect4.models.dto.PlayerDTO;
+import me.spring.connect4.constants.GamePiece;
 import me.spring.connect4.models.Player;
 
 public class GameState {
