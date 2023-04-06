@@ -8,6 +8,7 @@ import me.spring.connect4.models.PlayerStatistics;
 import me.spring.connect4.models.dto.AuthRequest;
 import me.spring.connect4.db.PlayerRepo;
 import me.spring.connect4.models.Player;
+import me.spring.connect4.models.dto.PlayerDTO;
 import me.spring.connect4.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

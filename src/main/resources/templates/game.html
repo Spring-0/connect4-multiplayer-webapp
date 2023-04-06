@@ -54,7 +54,7 @@
                     console.log(data);
                     switch(specialCase) {
                         case "PLAYER_WIN":
-                            alert(data["lastPlayed"]["username"] + " has won the game!");
+                            alert(data["lastPlayedUsername"] + " has won the game!");
                             endGame();
                             break;
                         case "PLAYER_FORFEIT":

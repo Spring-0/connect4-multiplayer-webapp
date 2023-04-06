@@ -65,7 +65,7 @@ function updateGameState(gameState, gameBoard){
 
     const cell = gameBoard.rows[row].cells[col];
 
-    if(gameState["lastPlayed"]["gamePiece"] == "RED"){
+    if(gameState["lastPlayedGamePiece"] == "RED"){
         img.src = RED_CHIP;
     } else{
         img.src = YELLOW_CHIP;
