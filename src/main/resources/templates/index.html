@@ -5,6 +5,7 @@
     <script th:src="@{/js/Util.js}"></script>
     <script th:src="@{/js/HomePage.js}"></script>
     <script th:src="@{/js/PlayerAuth.js}"></script>
+    <script>document.addEventListener('DOMContentLoaded', loadLeaderboard)</script>
     <link rel="stylesheet" th:href="@{/css/my-styles.css}">
     <meta charset="UTF-8">
     <title>Connect4</title>
@@ -34,14 +35,25 @@
             <a class="nav-link nav-item" href="/register" id="register-anchor">Register</a>
         </div>
 
-        <div class="p-4 bg-dark">
-            <div class="text-light">
-
-                <h4 class="text-center text-decoration-underline">How to play?</h4>
-                <br>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, aliquam aspernatur beatae cum, dolores
-                    ducimus eligendi et labore natus numquam obcaecati officia quam quisquam repellendus sed similique
-                    sit tempora veritatis!</p>
+        <div class="container py-4 text-light">
+            <div class="row">
+                <div class="col">
+                    <div class="card bg-dark text-light border-1 border-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Leaderboard</h5>
+                            <table class="table table-striped">
+                                <tbody id="leaderboard-tbody">
+                                <tr>
+                                    <th>Username</th>
+                                    <td>Games Played</td>
+                                    <td>Wins</td>
+                                    <td>Losses</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
