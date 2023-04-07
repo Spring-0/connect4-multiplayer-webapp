@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -79,6 +80,13 @@ public class PlayerController {
     public ResponseEntity<PlayerDTO> getPlayerDetails(@RequestParam("playerId") String playerId){
         PlayerDTO player = new PlayerDTO(playerRepo.findPlayerByPlayerID(playerId));
         return ResponseEntity.ok(player);
+    }
+
+
+    @GetMapping("/leaderboard/top-players")
+    public ResponseEntity<List<Object[]>> getLeaderboard(){
+        List<Object[]> top_players = playerRepo.findTopPlayersByWinLossRatio();
+        return ResponseEntity.ok(top_players);
     }
 
 }
