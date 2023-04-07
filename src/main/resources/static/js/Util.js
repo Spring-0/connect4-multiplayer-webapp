@@ -113,3 +113,17 @@ function getRaw(endpoint){
         })
 }
 
+
+function addPlayerRowToLeaderboardTable(playerName, gamesPlayed, wins, losses) {
+    const table = document.getElementById("leaderboard-tbody");
+    const row = table.insertRow(-1); // Add row at end of table
+    const nameCell = row.insertCell(0); // Add cell for player name
+    const gamesPlayedCell = row.insertCell(1); // Add cell for games played
+    const winsCell = row.insertCell(2); // Add cell for wins
+    const lossesCell = row.insertCell(3); // Add cell for losses
+    nameCell.innerHTML = playerName;
+    gamesPlayedCell.innerHTML = gamesPlayed;
+    winsCell.innerHTML = wins;
+    lossesCell.innerHTML = losses;
+}
+

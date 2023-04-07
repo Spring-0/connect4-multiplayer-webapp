@@ -73,3 +73,14 @@ function showGameOptionPopup(){
 }
 
 
+
+function loadLeaderboard(){
+    getRaw("/player/leaderboard/top-players")
+        .then(response => {
+            for (let i = 0; i < 10; i++) {
+                let data = response[i];
+                addPlayerRowToLeaderboardTable(data[0], data[1], data[2], data[3]);
+            }
+        })
+}
+
