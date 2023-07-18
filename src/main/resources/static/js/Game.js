@@ -71,6 +71,17 @@ function updateGameState(gameState, gameBoard){
         img.src = YELLOW_CHIP;
     }
 
+    const playerName1 = document.getElementById("player1Name");
+    const playerName2 = document.getElementById("player2Name");
+
+    if (gameState["lastPlayedUsername"] === playerName1.innerText) {
+        playerName1.style.color = "green"; // Set the color for player 1's turn
+        playerName2.style.color = "white"; // Set the color for player 2's turn (default color)
+    } else {
+        playerName1.style.color = "white"; // Set the color for player 1's turn (default color)
+        playerName2.style.color = "green"; // Set the color for player 2's turn
+    }
+
     cell.appendChild(img);
 }
 
